@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "linkedin_clone",
+      "request": "launch",
+      "type": "dart",
+      "showMemoryUsage": true,
+      "flutterMode": "debug"
+    }
+  ]
+}
