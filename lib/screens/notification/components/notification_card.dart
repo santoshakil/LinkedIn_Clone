@@ -5,9 +5,9 @@ import '../../../helpers/screen_size.dart/screen_size.dart';
 import 'bottom_sheet.dart';
 
 class NotificationCard extends StatelessWidget {
-  const NotificationCard({
-    Key? key,
-  }) : super(key: key);
+  final int index;
+
+  const NotificationCard({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class NotificationCard extends StatelessWidget {
               context: context,
               backgroundColor: Colors.transparent,
               barrierColor: Colors.grey.shade900.withOpacity(0.3),
-              builder: (_) => NotificationBottomSheet(),
+              builder: (context) => NotificationBottomSheet(index: index),
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 7.0),

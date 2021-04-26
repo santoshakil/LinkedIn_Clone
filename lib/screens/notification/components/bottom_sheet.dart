@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_clone/providers/notifications.dart';
+import 'package:provider/provider.dart';
 
 import '../../../helpers/screen_size.dart/screen_size.dart';
 import 'bottom_sheet_button.dart';
 
 class NotificationBottomSheet extends StatelessWidget {
-  const NotificationBottomSheet({
-    Key? key,
-  }) : super(key: key);
+  final int index;
+
+  const NotificationBottomSheet({Key? key, required this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +32,15 @@ class NotificationBottomSheet extends StatelessWidget {
               endIndent: Screen.width! * 0.42,
               color: Colors.grey,
             ),
-            BottomSheetButton(
-              icon: Icons.delete,
-              name: 'Delete',
-              des: 'Delete the notification',
+            GestureDetector(
+              onTap: () =>
+                  Provider.of<NotificationProvider>(context, listen: false)
+                      .remove(index),
+              child: BottomSheetButton(
+                icon: Icons.delete,
+                name: 'Delete',
+                des: 'Delete the notification',
+              ),
             ),
             BottomSheetButton(
               icon: Icons.cancel,
