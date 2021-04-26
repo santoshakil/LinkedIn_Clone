@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_clone/providers/reactions.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../components/svg_icon.dart';
 
@@ -9,12 +11,20 @@ class LikeCommentButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var reactionProvider = Provider.of<ReactionProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CardButton(lebel: 'Like', icon: 'likebw'),
+          GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTap: () {
+              print('Liked');
+              reactionProvider.like();
+            },
+            child: CardButton(lebel: 'Like', icon: 'likebw'),
+          ),
           CardButton(lebel: 'Comment', icon: 'comment'),
           CardButton(lebel: 'Share', icon: 'share'),
           CardButton(lebel: 'Send', icon: 'send'),
@@ -32,14 +42,11 @@ class CardButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Column(
-        children: [
-          SvgIcon(name: icon, hight: 18.0),
-          Text(lebel, style: TextStyle(fontSize: 12.0)),
-        ],
-      ),
+    return Column(
+      children: [
+        SvgIcon(name: icon, hight: 18.0),
+        Text(lebel, style: TextStyle(fontSize: 12.0)),
+      ],
     );
   }
 }

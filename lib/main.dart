@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:linkedin_clone/providers/reactions.dart';
 import 'package:provider/provider.dart';
 
 import 'helpers/themes/theme.dart';
@@ -16,6 +17,7 @@ void main() {
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => SelectedScreen()),
+          ChangeNotifierProvider(create: (_) => ReactionProvider()),
         ],
         child: Wrapper(),
       ),

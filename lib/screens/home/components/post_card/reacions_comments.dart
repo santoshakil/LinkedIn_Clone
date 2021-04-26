@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_clone/providers/reactions.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../components/svg_icon.dart';
 
@@ -21,7 +23,7 @@ class ReactionsComments extends StatelessWidget {
               SvgIcon(name: 'like'),
               SvgIcon(name: 'heart'),
               Text(
-                '  ' + reactions,
+                '  ' + Provider.of<ReactionProvider>(context).likes.toString(),
                 style: TextStyle(
                   fontSize: 12.0,
                   color: Colors.grey.shade900.withOpacity(0.9),
