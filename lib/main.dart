@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:linkedin_clone/providers/notifications.dart';
-import 'package:linkedin_clone/providers/reactions.dart';
 import 'package:provider/provider.dart';
 
 import 'helpers/themes/theme.dart';
+import 'providers/notifications.dart';
+import 'providers/reactions.dart';
 import 'providers/selected_screen.dart';
 import 'screens/wrapper.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(uiStyle);
+  Provider.debugCheckInvalidValueType = null;
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,

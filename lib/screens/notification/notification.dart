@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/providers/notifications.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/notifications.dart';
 import '../home/components/head/home_head.dart';
+import 'components/notification_card.dart';
 
 class NotificationScreen extends StatelessWidget {
   @override
@@ -14,10 +15,10 @@ class NotificationScreen extends StatelessWidget {
           child: HomeHead(),
         ),
         ListView.builder(
-          itemCount: 3,
+          itemCount:
+              Provider.of<NotificationProvider>(context).notification.length,
           shrinkWrap: true,
-          itemBuilder: (context, i) =>
-              Provider.of<NotificationProvider>(context).notification[i],
+          itemBuilder: (context, i) => NotificationCard(index: i),
         ),
       ],
     );

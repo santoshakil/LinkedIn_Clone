@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/svg_icon.dart';
 import '../../../helpers/screen_size.dart/screen_size.dart';
+import '../../../providers/notifications.dart';
 import 'bottom_sheet.dart';
 
 class NotificationCard extends StatelessWidget {
@@ -37,12 +39,19 @@ class NotificationCard extends StatelessWidget {
           ),
           Spacer(),
           GestureDetector(
-            onTap: () => showModalBottomSheet(
-              context: context,
-              backgroundColor: Colors.transparent,
-              barrierColor: Colors.grey.shade900.withOpacity(0.3),
-              builder: (context) => NotificationBottomSheet(index: index),
-            ),
+            onTap: () {
+              var provider =
+                  Provider.of<NotificationProvider>(context, listen: false);
+              showModalBottomSheet(
+                context: context,
+                backgroundColor: Colors.transparent,
+                barrierColor: Colors.grey.shade900.withOpacity(0.3),
+                builder: (context) => Provider.value(
+                  value: provider,
+                  child: NotificationBottomSheet(index: index),
+                ),
+              );
+            },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 7.0),
               child: Icon(Icons.more_vert),
